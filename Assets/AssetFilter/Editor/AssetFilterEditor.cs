@@ -254,5 +254,5 @@ namespace Developer.AssetFilter
             return filterAssets.Count / eachPageCount + (filterAssets.Count % eachPageCount == 0 ? 0 : 1);
         }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

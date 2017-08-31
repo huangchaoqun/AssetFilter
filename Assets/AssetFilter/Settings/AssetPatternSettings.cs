@@ -55,5 +55,5 @@ namespace Developer.AssetFilter
             return instance;
         }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}
