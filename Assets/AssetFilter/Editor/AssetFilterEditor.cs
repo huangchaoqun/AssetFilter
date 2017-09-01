@@ -50,7 +50,7 @@ namespace Developer.AssetFilter
         #endregion
 
         #region Private Method
-        [MenuItem("Tool/Asset Filter &A")]
+        [MenuItem("Tool/Asset Filter &F")]
         private static void ShowEditor()
         {
             instance = GetWindow<AssetFilterEditor>("Asset Filter");
