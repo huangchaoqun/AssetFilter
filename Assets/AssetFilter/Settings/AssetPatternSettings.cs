@@ -1,7 +1,7 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
  *  FileName: AssetPatternSettings.cs
- *  Author: Mogoson   Version: 1.0   Date: 8/18/2017
+ *  Author: Mogoson   Version: 0.1.0   Date: 8/18/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,7 +14,7 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     8/18/2017       1.0        Build this file.
+ *     1.     Mogoson     8/18/2017       0.1.0       Create this file.
  *************************************************************************/
 
 namespace Developer.AssetFilter
