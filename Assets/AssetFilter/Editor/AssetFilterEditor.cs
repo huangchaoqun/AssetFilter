@@ -17,24 +17,24 @@
  *     1.     Mogoson     8/18/2017       0.1.0       Create this file.
  *************************************************************************/
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Threading;
+using UnityEditor;
+using UnityEngine;
+
 namespace Developer.AssetFilter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text.RegularExpressions;
-    using System.Threading;
-    using UnityEditor;
-    using UnityEngine;
-
     public class AssetFilterEditor : EditorWindow
     {
         #region Property and Field
         private static AssetFilterEditor instance;
         private Thread thread;
 
-        private const float leftAlignment = 120;
-        private const float rightAlignment = 80;
+        private const float labelWidth = 120;
+        private const float buttonWidth = 80;
         private Vector2 scrollPos = Vector2.zero;
 
         private const string lastDirectory = "LastDirectory";
@@ -60,7 +60,7 @@ namespace Developer.AssetFilter
         private void OnEnable()
         {
             targetDirectory = EditorPrefs.GetString(lastDirectory, targetDirectory);
-            patternSettings = AssetDatabase.LoadAssetAtPath<AssetPatternSettings>(settingsPath);
+            patternSettings = AssetDatabase.LoadAssetAtPath(settingsPath, typeof(AssetPatternSettings)) as AssetPatternSettings;
         }
 
         private void OnDisable()
@@ -74,21 +74,21 @@ namespace Developer.AssetFilter
 
             #region Select Directory
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Target Directory", GUILayout.Width(leftAlignment));
+            GUILayout.Label("Target Directory", GUILayout.Width(labelWidth));
             targetDirectory = GUILayout.TextField(targetDirectory);
-            if (GUILayout.Button("Browse", GUILayout.Width(rightAlignment)))
+            if (GUILayout.Button("Browse", GUILayout.Width(buttonWidth)))
                 SelectDirectory();
             GUILayout.EndHorizontal();
             #endregion
 
             #region Pattern Settings
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Pattern Settings", GUILayout.Width(leftAlignment));
+            GUILayout.Label("Pattern Settings", GUILayout.Width(labelWidth));
             EditorGUI.BeginChangeCheck();
             patternSettings = EditorGUILayout.ObjectField(patternSettings, typeof(AssetPatternSettings), false) as AssetPatternSettings;
             if (EditorGUI.EndChangeCheck())
                 ClearEditorCache();
-            if (GUILayout.Button("New", GUILayout.Width(rightAlignment)))
+            if (GUILayout.Button("New", GUILayout.Width(buttonWidth)))
                 CreateNewSettings();
             GUILayout.EndHorizontal();
             #endregion
@@ -96,16 +96,16 @@ namespace Developer.AssetFilter
             #region Top Tool Bar
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Check", GUILayout.Width(rightAlignment)))
+            if (GUILayout.Button("Check", GUILayout.Width(buttonWidth)))
                 CheckAssetsName();
-            if (GUILayout.Button("Clear", GUILayout.Width(rightAlignment)))
+            if (GUILayout.Button("Clear", GUILayout.Width(buttonWidth)))
                 ClearEditorCache();
             GUILayout.EndHorizontal();
             #endregion
 
             #region Mismatch Assets
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Mismatch Assets", GUILayout.Width(leftAlignment));
+            GUILayout.Label("Mismatch Assets", GUILayout.Width(labelWidth));
             GUILayout.Label(filterAssets.Count.ToString());
             GUILayout.EndHorizontal();
 
@@ -121,25 +121,36 @@ namespace Developer.AssetFilter
             #endregion
 
             #region Bottom Tool Bar
-            GUILayout.BeginHorizontal();
-            if (pageIndex > 0)
+            if (pageCount > 1)
             {
-                if (GUILayout.Button("Previous", GUILayout.Width(rightAlignment)))
+                GUILayout.BeginHorizontal();
+                if (pageIndex > 0)
                 {
-                    pageIndex--;
-                    scrollPos = Vector2.zero;
+                    if (GUILayout.Button("Previous", GUILayout.Width(buttonWidth)))
+                    {
+                        pageIndex--;
+                        scrollPos = Vector2.zero;
+                    }
                 }
-            }
-            GUILayout.FlexibleSpace();
-            if (pageIndex < pageCount - 1)
-            {
-                if (GUILayout.Button("Next", GUILayout.Width(rightAlignment)))
+                else
+                    GUILayout.Label(string.Empty, GUILayout.Width(buttonWidth));
+
+                GUILayout.FlexibleSpace();
+                GUILayout.Label(pageIndex + 1 + " / " + pageCount);
+                GUILayout.FlexibleSpace();
+
+                if (pageIndex < pageCount - 1)
                 {
-                    pageIndex++;
-                    scrollPos = Vector2.zero;
+                    if (GUILayout.Button("Next", GUILayout.Width(buttonWidth)))
+                    {
+                        pageIndex++;
+                        scrollPos = Vector2.zero;
+                    }
                 }
+                else
+                    GUILayout.Label(string.Empty, GUILayout.Width(buttonWidth));
+                GUILayout.EndHorizontal();
             }
-            GUILayout.EndHorizontal();
             #endregion
 
             GUILayout.EndVertical();
@@ -216,6 +227,7 @@ namespace Developer.AssetFilter
                         if (CheckMismatchPattern(file))
                             filterAssets.Add(file);
                         doneCount++;
+                        Thread.Sleep(0);
                     }
                     pageCount = GetCurrentPageCount();
                 });

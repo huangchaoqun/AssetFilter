@@ -17,12 +17,12 @@
  *     1.     Mogoson     8/18/2017       0.1.0       Create this file.
  *************************************************************************/
 
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Developer.AssetFilter
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-
     [Serializable]
     public struct AssetPattern
     {
