@@ -31,7 +31,7 @@
     Click the "Browse" button to select the "Target Directory".
 
     Click the "New" button to create the "Pattern Settings", select and
-	config it in Unity Inspector.
+    config it in Unity Inspector.
 
     Click the "Check" button to start check the target assets names.
 
