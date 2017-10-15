@@ -1,20 +1,15 @@
 /*************************************************************************
  *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
- *  FileName: AssetFilterEditor.cs
- *  Author: Mogoson   Version: 0.1.0   Date: 8/18/2017
- *  Version Description:
- *    Internal develop version,mainly to achieve its function.
- *  File Description:
- *    Ignore.
- *  Class List:
- *    <ID>           <name>             <description>
- *     1.       AssetFilterEditor          Ignore.
- *  Function List:
- *    <class ID>     <name>             <description>
- *     1.
- *  History:
- *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     8/18/2017       0.1.0       Create this file.
+ *------------------------------------------------------------------------
+ *  File         :  AssetFilterEditor.cs
+ *  Description  :  Editor to check the name of assets under the target
+ *                  directory, filter and display the assets those name
+ *                  is mismatch the define specification.
+ *------------------------------------------------------------------------
+ *  Author       :  Mogoson
+ *  Version      :  0.1.0
+ *  Date         :  8/18/2017
+ *  Description  :  Initial development version.
  *************************************************************************/
 
 using System;
