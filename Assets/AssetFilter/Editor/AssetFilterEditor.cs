@@ -32,7 +32,7 @@ namespace Developer.AssetFilter
         private const float buttonWidth = 80;
         private Vector2 scrollPos = Vector2.zero;
 
-        private const string lastDirectory = "LastDirectory";
+        private const string targetDirectoryKey = "AssetFilterTargetDirectory";
         private string targetDirectory = "Assets";
 
         private const string settingsPath = "Assets/AssetFilter/Settings/AssetPatternSettings.asset";
@@ -54,7 +54,7 @@ namespace Developer.AssetFilter
 
         private void OnEnable()
         {
-            targetDirectory = EditorPrefs.GetString(lastDirectory, targetDirectory);
+            targetDirectory = EditorPrefs.GetString(targetDirectoryKey, targetDirectory);
             patternSettings = AssetDatabase.LoadAssetAtPath(settingsPath, typeof(AssetPatternSettings)) as AssetPatternSettings;
         }
 
@@ -182,7 +182,7 @@ namespace Developer.AssetFilter
             try
             {
                 targetDirectory = selectDirectory.Substring(selectDirectory.IndexOf("Assets"));
-                EditorPrefs.SetString(lastDirectory, targetDirectory);
+                EditorPrefs.SetString(targetDirectoryKey, targetDirectory);
             }
             catch
             {

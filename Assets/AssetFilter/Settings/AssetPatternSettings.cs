@@ -41,10 +41,10 @@ namespace Developer.AssetFilter
         public static AssetPatternSettings CreateDefaultInstance()
         {
             var instance = CreateInstance<AssetPatternSettings>();
-            instance.assetPatterns.Add(new AssetPattern("Script", "^[A-Z]+[A-Za-z]+$", ".cs|.js"));
-            instance.assetPatterns.Add(new AssetPattern("Model", "^[A-Z]+[A-Za-z0-9]+$", ".fbx|.obj|.max|.3ds|.blend|.dae|.dxf"));
-            instance.assetPatterns.Add(new AssetPattern("Material", "^[A-Z]+(_?[A-Za-z0-9]+)+$", ".mat"));
-            instance.assetPatterns.Add(new AssetPattern("Texture", "^[A-Z]+(_?[A-Za-z0-9]+)+$", ".jpg|.png|.tga|.bmp|.psd|.gif|.iff|.tiff|.pict"));
+            instance.assetPatterns.Add(new AssetPattern("Script", "^[A-Z]+[A-Za-z]+$", ".cs$|.js$"));
+            instance.assetPatterns.Add(new AssetPattern("Model", "^[A-Z]+[A-Za-z0-9]+$", ".fbx$|.obj$|.max$|.3ds$|.blend$|.dae$|.dxf$"));
+            instance.assetPatterns.Add(new AssetPattern("Material", "^[A-Z]+(_?[A-Za-z0-9]+)+$", ".mat$"));
+            instance.assetPatterns.Add(new AssetPattern("Texture", "^[A-Z]+(_?[A-Za-z0-9]+)+$", ".jpg$|.png$|.tga$|.bmp$|.psd$|.gif$|.iff$|.tiff$|.pict$"));
             return instance;
         }
         #endregion
