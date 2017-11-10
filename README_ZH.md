@@ -16,14 +16,10 @@ Unity3D 资源文件命名规范过滤器。
 - AssetPatternSettings：资源文件命名规范模板配置；
 - AssetFilterEditor：绘制扩展编辑器窗口，选择目标资源文件夹，命名规范配置文件；过滤，浏览，定位不遵循规范的资源文件。
 
-## 图示
-- Asset Pattern Settings
-
-![AssetPatternSettings](./Attachments/AssetPatternSettings.png)
-
+## 预览
 - Asset Filter Editor
 
-![AssetFilterEditor](./Attachments/AssetFilterEditor.png)
+![AssetFilterEditor](./Attachments/README_Image/AssetFilterEditor.gif)
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。

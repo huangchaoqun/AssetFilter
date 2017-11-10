@@ -20,13 +20,9 @@ Unity plugin for asset name specification filter.
   assets those name is mismatch the define specification.
 
 ## Preview
-- Asset Pattern Settings
-
-![AssetPatternSettings](./Attachments/AssetPatternSettings.png)
-
 - Asset Filter Editor
 
-![AssetFilterEditor](./Attachments/AssetFilterEditor.png)
+![AssetFilterEditor](./Attachments/README_Image/AssetFilterEditor.gif)
 
 ## Contact
-- If you have any questions, fell free to contact me at mogoson@qq.com.
+- If you have any questions, feel free to contact me at mogoson@qq.com.
